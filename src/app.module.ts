@@ -6,7 +6,8 @@ import { AppService } from './app.service';
 import { PostsModule } from './posts/posts.module';
 import { PostsEntity } from './posts/posts.entity';
 import envConfig from './config/env';
-import { DataSource, DataSourceOptions } from 'typeorm';
+import { DataSource } from 'typeorm';
+import { isProd } from "./config/env"
 
 
 @Module({
@@ -26,7 +27,7 @@ import { DataSource, DataSourceOptions } from 'typeorm';
         password: configService.get('password', 'root'), // 密码
         database: configService.get('database', 'blog'), //数据库名
         timezone: '+08:00', //服务器上配置的时区
-        synchronize: true, //根据实体自动创建数据库表， 生产环境建议关闭
+        synchronize: isProd ? false : true, //根据实体自动创建数据库表， 生产环境建议关闭
         autoLoadEntities: true
       }),
 
@@ -34,10 +35,10 @@ import { DataSource, DataSourceOptions } from 'typeorm';
   ],
   controllers: [AppController],
   providers: [AppService],
-  exports:[TypeOrmModule]
+  exports: [TypeOrmModule]
 })
 
-export class AppModule { 
-  constructor(private dataSource:DataSource){
+export class AppModule {
+  constructor(private dataSource: DataSource) {
   }
 }

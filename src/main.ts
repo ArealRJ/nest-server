@@ -15,8 +15,8 @@ async function bootstrap() {
 
   // swagger 配置
   const config = new DocumentBuilder()
-    .setTitle('管理后台')   
-    .setDescription('管理后台接口文档')
+    .setTitle('blog')   
+    .setDescription('blog接口文档')
     .setVersion('1.0')
     .addBearerAuth()
     .build();
