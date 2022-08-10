@@ -6,7 +6,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
+  // 全局接口前缀
   app.setGlobalPrefix('api')
   // 全局异常过滤器
   app.useGlobalFilters(new HttpExceptionFilter())
