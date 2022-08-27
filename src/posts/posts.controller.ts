@@ -26,6 +26,7 @@ export class PostsController {
   @ApiOperation({ summary: '获取文章列表' })
   @Get()
   async findAll(@Query() query): Promise<PostsRo> {
+    console.log(query);
     return await this.postsService.findAll(query)
   }
 
